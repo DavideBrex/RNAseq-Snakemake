@@ -4,6 +4,12 @@
 
 Snakemake-based RNA-seq pipeline to be run in our PBS-based HPC using singularity containers. The singularity image that is used to run this pipeline is created from [this](https://github.com/dfernandezperez/Docker/blob/master/RNA-seq/Dockerfile) docker container.
 
+## Workflow
+
+<img align="right" src="https://github.com/DavideBrex/TEs-Analyser/blob/cac80a19f5cd9fbcc70da50a9033a5b810f50279/rulegraph.svg">
+
+
+
 ## Setup
 
 The following files are located inside the folder `configuration`. In this folder you will find the files with raw data paths (`units.tsv`), sample metadata (`samples.tsv`), cluster configuration (`cluster.yaml`) and pipeline parameters -alignment, peak calling...- (`config.yaml`).
