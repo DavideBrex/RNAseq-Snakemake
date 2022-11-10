@@ -29,8 +29,8 @@ Here I am using lane1 and lane2 for consistency and making things more clear, bu
 
 | sample | lane | fq1 | fq2 |
 |--------|------|-----|------|
-| foo | potato | path/to/forward_lane1.fastq | path/to/reverse_lane1.fastq |
-| foo | checazzo | path/to/forward_lane2.fastq | path/to/reverse_lane2.fastq |
+| foo | lane1 | path/to/forward_lane1.fastq | path/to/reverse_lane1.fastq |
+| foo | lane2 | path/to/forward_lane2.fastq | path/to/reverse_lane2.fastq |
 
 * Finally the last 2 fields `fq1` and `fq2` correspond to the paths to the fastq files. `fq1` is the FORWARD read and  `fq2` the REVERSE. The order is very important because they will be sent in that order to the aligner.
 
