@@ -6,8 +6,7 @@ Snakemake-based RNA-seq pipeline to be run in our PBS-based HPC using singularit
 
 ## Workflow
 
-<img align="right" src="https://github.com/DavideBrex/TEs-Analyser/blob/cac80a19f5cd9fbcc70da50a9033a5b810f50279/rulegraph.svg">
-
+<img align="center" src="https://github.com/DavideBrex/RNAseq-Snakemake/blob/master/rulegraph.pdf">
 
 
 ## Setup
