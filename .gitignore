@@ -7,6 +7,7 @@ results/*
 .benchmarks/
 .snakemake/
 .DS_Store
+.snakemake_pipeline_RNA/
 
 # Compiled source #
 ###################

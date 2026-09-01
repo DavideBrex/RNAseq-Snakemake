@@ -21,8 +21,8 @@ pval   <- as.numeric(snakemake@params[["pval"]])
 #------------------------------------------------------------------------------------------
 
 p <- VolcanoPlot(df, 
-                    xlim      = c(-8,8),
-                    ylim      = c(0,18),
+                    xlim      = c(-10,10),
+                    ylim      = c(0,40),
                     main      = gsub("-", " ", snakemake@params[["contrast"]]),
                     labelSize = 8,
                     pval      = pval,
