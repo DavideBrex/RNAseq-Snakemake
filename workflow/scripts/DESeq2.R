@@ -32,7 +32,13 @@ stopifnot(identical(colnames(counts_ordered), as.character(colData$sample)))
 dds <- DESeqDataSetFromMatrix(countData = counts_ordered,
                               colData   = colData,
                               design    = ~ condition)
-dds <- DESeq(dds)
+# No replicates -> dispersions can't be estimated; size factors are enough
+if (all(table(colData$condition) == 1)) {
+  message("No replicates detected: running estimateSizeFactors() only")
+  dds <- estimateSizeFactors(dds)
+} else {
+  dds <- DESeq(dds)
+}
 
 norm_counts <- counts(dds, normalized = T) %>% 
                 data.frame %>% 

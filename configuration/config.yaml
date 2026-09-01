@@ -9,7 +9,7 @@ units: configuration/units.tsv
 
 
 # path (from the repository root) to cluster configuration. Parameters for submitting jobs to cluster via qsub
-cluster: configuration/cluster.json
+cluster: configuration/cluster.yaml
 
 
 # Prefix to temporary
@@ -18,13 +18,14 @@ cluster: configuration/cluster.json
 # Just write the prefix-path where you want to put those files, or write '.' to have them in the workdir.
 # By now just fastq files will be located in this folder
 # IMPORTANT: if you have running multiple snakemake pipelines with the same tmp folder all the fastq files will be located togeter. Care with the sample names to not be repeated.
-tmp: /hpcnfs/scratch/temporary/.snakemake_pipeline_RNA
+# tmp: /shares/CIBIO-Storage/scratch_CIBIO/sharedLC/DavideBressan/RNA-seq/BAP1_DaPezzo/PIPELINE/.snakemake_pipeline_RNA
+tmp: /shares/CIBIO-Storage/scratch_CIBIO/sharedLC/.snakemake_pipeline_RNA
 
 
 # perform trimming: false or true
 # if true go to params (at the end)
 # to set desired trimming parameters
-trimming: false
+trimming: true
 
 # perform lfcshrink: FALSE or TRUE
 # Set in capital letters since it will be read by R
@@ -33,29 +34,29 @@ trimming: false
 lfcShrink: TRUE
 
 # Set seed for downsampling
-seed: 1234
+seed: 123
 
 
 ref:
   # Select the genome of the organism, needed to perform GO analyses. Supported: mouse, human.
   genome: "mouse"
   # the STAR index
-  index: /hpcnfs/data/DP/STAR_INDEXES/v2.7.5a/GRCm38
+  index: "/shares/CIBIO-Storage/CIBIO/sharedLC/mouse_genome/mouse_ref_gen_index_star2.7"
   # gtf file with transcripts
-  annotation: /hpcnfs/data/DP/STAR_INDEXES/v2.7.5a/GRCm38/gencode.vM21.annotation.gtf
+  annotation: "/shares/CIBIO-Storage/CIBIO/sharedLC/mouse_genome/gencode.vM25.annotation.gtf"
   # This will be used to add different annotations to the DEGs table.
   # i.e: ensembl, entrez, ucsc... 
   geneInfo: 
     # path to geneInfo.tab file from STAR
     # leave it blank if there's no file or you don' want to perform this
-    file: /hpcnfs/data/DP/STAR_INDEXES/v2.7.5a/GRCm38/geneInfo.tab
+    file: 
     # Define the position of the column used for the annotation and the column to add.
     # So, if we used geneSymbol as annotation (2nd column) and we want ENSEMBL (first)
     # Write 2 in used and 1 in toAdd
-    column_used: 2
-    column_toAdd: 1
+    column_used: 
+    column_toAdd: 
     # Name of the annotation to add (ENSEMBL, SYMBOL, ENTREZID...)
-    name_annotation: "ENSEMBL"
+    name_annotation: 
 
 
 pca:
@@ -72,13 +73,13 @@ diffexp:
   # Filter thresholds to call differentially expressed genes
   fpkm: 
     - 0
+    - 1.5
+    - 3
+    - 5
   pvalue: 
     - 0.05
   log2fc: 
-    - 1
     - 1.5
-    - 2
-    - 2.5
   # contrasts for the deseq2 results method
   contrasts:
     CTR_T-vs-CTR_NT:
@@ -90,7 +91,6 @@ diffexp:
     P6KO_T-vs-CTR_NT:
       - P6KO_T
       - CTR_NT
-
       
 enrichments:
   # Perform or not enrichment analysis. True or False.
